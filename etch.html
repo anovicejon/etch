@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-A-Sketch</title>
+    <style>
+       #container {
+        border: 2px solid black;
+        position: fixed;
+        display: flex;
+        flex-wrap: wrap;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color:hsl(259, 70%, 71%);
+        justify-content: space-evenly;
+       }
+
+       .grid-cell {
+        border: 1px solid black;
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        flex-grow: 1;
+        min-width: 0;
+        min-height: 0;
+       }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+ <script>
+/* 
+Step 1. Create 16 x 16 grid using JS. All of them are inside a div (container)
+Step 2. Use flexbox to make the divs grid. Only use flexbox, not css grid.
+Step 3. Set up hover effect using event listener when the mouse hover over the grids like changing colors. 
+Step 4. Add a button on top of the screen that will pop up (prompts) asking the user number of squares for new grid but will occupy same number of space.
+    - Set limit of square to 100.*/
+
+// Get the GRID Container
+
+const gridContainer = document.getElementById('container');
+
+let rows = 16;
+let columns = 16;
+//function to create the grid
+const createGrid = function () {
+    for (let i = 0 ; i < rows ; i++) {
+        for (let j = 0 ; j < columns ; j ++) {
+            const cell = document.createElement('div');
+            //CSS Class to use for styling. this adds class using JS
+            cell.classList.add('grid-cell');
+            //To see the cell numbers - remove later
+            cell.textContent = `C ${i + 1}-${j + 1}`;
+            gridContainer.appendChild(cell);
+        }
+    }
+}
+//Calls the function to create the grid
+createGrid();
+
+
+ </script>   
+</body>
+</html>
+
